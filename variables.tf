@@ -37,8 +37,6 @@ variable "name" {
   default     = ""
 }
 
-
-
 ##############
 # Registration
 ##############

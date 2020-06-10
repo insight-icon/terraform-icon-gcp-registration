@@ -30,7 +30,7 @@ data "google_client_config" "current" {
 resource "google_compute_address" "this" {
   count = var.details_endpoint == "" && ! var.skip_registration ? 1 : 0
 
-  name = "main-ip"
+  name = local.bucket_name
 }
 
 resource "google_storage_bucket" "this" {

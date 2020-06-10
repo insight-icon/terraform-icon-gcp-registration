@@ -25,3 +25,11 @@ output "registration_command" {
 output "update_registration_command" {
   value = module.registration.update_registration_command
 }
+
+output "id" {
+  value = local.bucket_name
+}
+
+output "bucket_name" {
+  value = local.bucket_name
+}

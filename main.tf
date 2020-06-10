@@ -9,8 +9,8 @@ resource "random_pet" "this" {
 locals {
   tags            = merge(var.tags, { "Name" = "${var.network_name}-ip" })
   bucket_name     = var.bucket_name == "" ? replace(lower(var.organization_name), "/[_\\s]", "-") : var.bucket_name
-  static_endpoint = var.details_endpoint == "" ? "https://${join("", google_storage_bucket.this.*.website)}/details.json" : var.details_endpoint
-  public_ip       = var.public_ip == "" ? join("", google_compute_address.this.*.address) : var.public_ip
+  static_endpoint = var.details_endpoint == "" ? "https://${join("", google_storage_bucket.this.*.self_link)}/details.json" : var.details_endpoint
+  public_ip       = var.public_ip == null ? join("", google_compute_address.this.*.address) : var.public_ip
 }
 
 module "registration" {
@@ -18,7 +18,8 @@ module "registration" {
 
   skip_registration = var.skip_registration
 
-  public_ip       = local.public_ip
+  public_ip = local.public_ip
+  //  public_ip = join("", google_compute_address.this.*.address)
   static_endpoint = local.static_endpoint
   network_name    = var.network_name
 

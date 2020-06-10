@@ -121,8 +121,10 @@ No issue is creating limit on this module.
 
 | Name | Description |
 |------|-------------|
+| bucket\_name | n/a |
 | details\_content | n/a |
 | details\_endpoint | n/a |
+| id | n/a |
 | network\_name | n/a |
 | public\_ip | n/a |
 | registration\_command | n/a |
